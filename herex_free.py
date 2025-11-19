@@ -45,3 +45,111 @@ if __name__ == "__main__":
     # False
     # Voor sorteren: [Eden Hazard (10), Moussa Dembele (19), Jan Vertonghen (5)]
     # Na sorteren op nummer: [Jan Vertonghen (5), Eden Hazard (10), Moussa Dembele (19)]
+
+# Eerst de Player-klasse uit deel 1 (moet in hetzelfde bestand staan of geïmporteerd worden)
+
+
+
+# ==================== DEEL 2: KLASSE PASS ====================
+class Pass:
+    def __init__(self, sender, receiver, nr_of_times):
+        self.sender = sender          # Player object
+        self.receiver = receiver      # Player object
+        self.nr_of_times = nr_of_times  # int
+
+    def get_weight(self):
+        return self.nr_of_times
+
+    def get_start(self):
+        return self.sender
+
+    def get_end(self):
+        return self.receiver
+
+    def __eq__(self, other):
+        if not isinstance(other, Pass):
+            return NotImplemented
+        return self.sender == other.sender and self.receiver == other.receiver
+        # nr_of_times telt NIET mee voor gelijkheid!
+
+    def __str__(self):
+        return f"Pass from {self.sender.name} to {self.receiver.name}"
+
+
+# ==================== TESTEN (0.5 punt) ====================
+if __name__ == "__main__":
+    # 3 Player objecten
+    hazard = Player("Eden Hazard", 10)
+    dembele = Player("Moussa Dembele", 19)
+    vertonghen = Player("Jan Vertonghen", 5)
+    lukaku = Player("Romelu Lukaku", 9)
+
+    # 3 Pass objecten
+    pass1 = Pass(hazard, dembele, 15)
+    pass2 = Pass(vertonghen, lukaku, 8)
+    pass3 = Pass(hazard, dembele, 22)   # zelfde sender+receiver als pass1!
+
+    # Print één Pass
+    print(pass1)   # verwacht: Pass from Eden Hazard to Moussa Dembele
+
+    # Test __eq__
+    print(pass1 == pass3)   # True  (zelfde spelers, aantal keren maakt niet uit)
+    print(pass1 == pass2)   # False
+
+    # Test get_weight
+    print(pass1.get_weight())   # 15
+    print(pass3.get_weight())   # 227
+
+# Eerst de Player-klasse uit deel 1 (moet in hetzelfde bestand staan of geïmporteerd worden)
+
+
+
+# ==================== DEEL 2: KLASSE PASS ====================
+class Pass:
+    def __init__(self, sender, receiver, nr_of_times):
+        self.sender = sender          # Player object
+        self.receiver = receiver      # Player object
+        self.nr_of_times = nr_of_times  # int
+
+    def get_weight(self):
+        return self.nr_of_times
+
+    def get_start(self):
+        return self.sender
+
+    def get_end(self):
+        return self.receiver
+
+    def __eq__(self, other):
+        if not isinstance(other, Pass):
+            return NotImplemented
+        return self.sender == other.sender and self.receiver == other.receiver
+        # nr_of_times telt NIET mee voor gelijkheid!
+
+    def __str__(self):
+        return f"Pass from {self.sender.name} to {self.receiver.name}"
+
+
+# ==================== TESTEN (0.5 punt) ====================
+if __name__ == "__main__":
+    # 3 Player objecten
+    hazard = Player("Eden Hazard", 10)
+    dembele = Player("Moussa Dembele", 19)
+    vertonghen = Player("Jan Vertonghen", 5)
+    lukaku = Player("Romelu Lukaku", 9)
+
+    # 3 Pass objecten
+    pass1 = Pass(hazard, dembele, 15)
+    pass2 = Pass(vertonghen, lukaku, 8)
+    pass3 = Pass(hazard, dembele, 22)   # zelfde sender+receiver als pass1!
+
+    # Print één Pass
+    print(pass1)   # verwacht: Pass from Eden Hazard to Moussa Dembele
+
+    # Test __eq__
+    print(pass1 == pass3)   # True  (zelfde spelers, aantal keren maakt niet uit)
+    print(pass1 == pass2)   # False
+
+    # Test get_weight
+    print(pass1.get_weight())   # 15
+    print(pass3.get_weight())   # 22
